@@ -12,9 +12,8 @@ namespace MyPhotoshop.Filters
             return new ParameterInfo[0];
         }
 
-        public IParameters ParseParameters( double[] parameters )
+        public void ParseParameters( double[] parameters )
         {
-            return this;
         }
     }
 }

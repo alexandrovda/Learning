@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MyPhotoshop.Filters
 {
-    class LightningParameters:IParameters
+    public class LightningParameters:IParameters
     {
         public double Coefficient { get; set; }
 
@@ -24,10 +24,9 @@ namespace MyPhotoshop.Filters
                    };
         }
 
-        public IParameters ParseParameters( double[] parameters )
+        public void ParseParameters( double[] parameters )
         {
             Coefficient = parameters[ 0 ];
-            return this;
         }
     }
 }

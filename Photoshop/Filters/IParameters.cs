@@ -8,6 +8,6 @@ namespace MyPhotoshop.Filters
     public interface IParameters
     {
         ParameterInfo[] GetParameters();
-        IParameters ParseParameters(double[] parameters);
+        void ParseParameters(double[] parameters);
     }
 }

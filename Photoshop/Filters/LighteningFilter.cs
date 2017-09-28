@@ -2,19 +2,18 @@ using MyPhotoshop.Data;
 
 namespace MyPhotoshop.Filters
 {
-	public class LighteningFilter: PixelFilter
+    public class LighteningFilter : PixelFilter<LightningParameters>
 	{
-	    public LighteningFilter() : base(new LightningParameters()){}
-
 	    public override string ToString ()
 		{
 			return "Осветление/затемнение";
 		}
 		
 
-	    protected override Pixel ProcessPixel( Pixel original, IParameters parameters )
+	    protected override Pixel ProcessPixel( Pixel original, double[] values )
 	    {
-            return original * ((LightningParameters)parameters).Coefficient;
+	        Parameters.ParseParameters( values );
+            return original * Parameters.Coefficient;
 	    }
 	}
 }
