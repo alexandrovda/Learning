@@ -7,34 +7,21 @@ using MyPhotoshop.Data;
 
 namespace MyPhotoshop.Filters
 {
-    public abstract class PixelFilter<T>: IFilter
-        where T: class, IParameters, new()
+    public abstract class PixelFilter<T> : ParametrisedFilter<T>
+        where T: IParameters, new()
     {
-        protected T Parameters { get; set; }
-
-        public ParameterInfo[] GetParameters()
-        {
-            return Parameters.GetParameters();
-        }
-
-        protected PixelFilter()
-        {
-            Parameters = new T();
-        }
-
-        public Photo Process(Photo original, double[] values)
+        protected override Photo Process(Photo original, T parameters)
         {
             var result = new Photo(original.Width, original.Height);
 
             for (int x = 0; x < result.Width; x++)
                 for (int y = 0; y < result.Height; y++)
                 {
-                    Parameters.SetValues(values);
-                    result[x, y] = ProcessPixel(original[x, y]);
+                    result[x, y] = ProcessPixel(original[x, y], parameters);
                 }
             return result;
         }
 
-        protected abstract Pixel ProcessPixel(Pixel original);
+        protected abstract Pixel ProcessPixel(Pixel original, T parameters);
     }
 }

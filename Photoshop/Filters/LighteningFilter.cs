@@ -10,9 +10,9 @@ namespace MyPhotoshop.Filters
 		}
 		
 
-	    protected override Pixel ProcessPixel( Pixel original )
+	    protected override Pixel ProcessPixel( Pixel original, LightningParameters parameters )
 	    {
-            return original * Parameters.Coefficient;
+            return original * parameters.Coefficient;
 	    }
 	}
 }
