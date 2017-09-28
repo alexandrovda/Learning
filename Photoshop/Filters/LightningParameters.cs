@@ -24,7 +24,7 @@ namespace MyPhotoshop.Filters
                    };
         }
 
-        public void ParseParameters( double[] parameters )
+        public void SetValues( double[] parameters )
         {
             Coefficient = parameters[ 0 ];
         }

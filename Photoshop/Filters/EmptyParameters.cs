@@ -12,7 +12,7 @@ namespace MyPhotoshop.Filters
             return new ParameterInfo[0];
         }
 
-        public void ParseParameters( double[] parameters )
+        public void SetValues( double[] parameters )
         {
         }
     }

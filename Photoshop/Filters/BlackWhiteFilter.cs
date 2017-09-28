@@ -9,7 +9,7 @@ namespace MyPhotoshop.Filters
 {
     class BlackWhiteFilter: PixelFilter<EmptyParameters>
     {
-        protected override Pixel ProcessPixel(Pixel original, double[] parameters)
+        protected override Pixel ProcessPixel( Pixel original )
         {
             var avg = (original.R + original.G + original.B) / 3;
             return new Pixel(avg, avg, avg);

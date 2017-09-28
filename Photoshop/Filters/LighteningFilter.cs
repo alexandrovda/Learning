@@ -10,9 +10,8 @@ namespace MyPhotoshop.Filters
 		}
 		
 
-	    protected override Pixel ProcessPixel( Pixel original, double[] values )
+	    protected override Pixel ProcessPixel( Pixel original )
 	    {
-	        Parameters.ParseParameters( values );
             return original * Parameters.Coefficient;
 	    }
 	}
