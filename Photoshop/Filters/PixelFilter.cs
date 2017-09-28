@@ -9,30 +9,30 @@ namespace MyPhotoshop.Filters
 {
     public abstract class PixelFilter: IFilter
     {
-        protected IList<FilterParameter> Parameters { get; set; }
+        protected IParameters Parameters { get; set; }
 
         public ParameterInfo[] GetParameters()
         {
-            return Parameters.Select(p => p.Info ).ToArray();
+            return Parameters.GetParameters();
         }
 
-        protected PixelFilter()
+        protected PixelFilter(IParameters parameters)
         {
-            Parameters = new List<FilterParameter>();
+            Parameters = parameters;
         }
 
-        public Photo Process(Photo original, IList<FilterParameter> parameters)
+        public Photo Process(Photo original, double[] parameters)
         {
             var result = new Photo(original.Width, original.Height);
 
             for (int x = 0; x < result.Width; x++)
                 for (int y = 0; y < result.Height; y++)
                 {
-                    result[x, y] = ProcessPixel(original[x, y], parameters);
+                    result[x, y] = ProcessPixel(original[x, y], Parameters.ParseParameters(parameters));
                 }
             return result;
         }
 
-        protected abstract Pixel ProcessPixel(Pixel original, IList<FilterParameter> parameters);
+        protected abstract Pixel ProcessPixel(Pixel original, IParameters parameters);
     }
 }

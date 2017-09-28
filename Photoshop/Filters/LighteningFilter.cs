@@ -1,18 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 using MyPhotoshop.Data;
-using MyPhotoshop.Filters;
 
-namespace MyPhotoshop
+namespace MyPhotoshop.Filters
 {
-	public class LighteningFilter: PixelFilter, IFilter
+	public class LighteningFilter: PixelFilter
 	{
-	    public LighteningFilter()
-	    {
-            Parameters.Add(new FilterParameter( ){Info = new ParameterInfo { Name = "Коэффициент", MaxValue = 10, MinValue = 0, Increment = 0.1, DefaultValue = 1 }} );
-	    }
+	    public LighteningFilter() : base(new LightningParameters()){}
 
 	    public override string ToString ()
 		{
@@ -20,9 +12,9 @@ namespace MyPhotoshop
 		}
 		
 
-	    protected override Pixel ProcessPixel( Pixel original, IList< FilterParameter > parameters )
+	    protected override Pixel ProcessPixel( Pixel original, IParameters parameters )
 	    {
-            return original * parameters.First(p => p.Info.Name == "Коэффициент").Value;
+            return original * ((LightningParameters)parameters).Coefficient;
 	    }
 	}
 }

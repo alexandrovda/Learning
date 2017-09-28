@@ -133,7 +133,7 @@ namespace MyPhotoshop
 		
 		void Process(object sender, EventArgs empty)
 		{
-			var data=parametersControls.Select(z=>new FilterParameter(){Info = (ParameterInfo)z.Tag, Value = (double)z.Value}).ToArray();
+			var data=parametersControls.Select(z=>(double)z.Value).ToArray();
 			var filter=(IFilter)filtersSelect.SelectedItem;
 			Photo result=null;
      		result=filter.Process(originalPhoto,data);

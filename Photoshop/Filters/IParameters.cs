@@ -5,9 +5,9 @@ using System.Text;
 
 namespace MyPhotoshop.Filters
 {
-    public class FilterParameter
+    public interface IParameters
     {
-        public ParameterInfo Info { get; set; }
-        public double Value { get; set; }
+        ParameterInfo[] GetParameters();
+        IParameters ParseParameters(double[] parameters);
     }
 }

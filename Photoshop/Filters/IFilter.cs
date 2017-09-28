@@ -22,7 +22,7 @@ namespace MyPhotoshop
         /// <param name="original"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        Photo Process(Photo original, IList<FilterParameter> parameters);
+        Photo Process(Photo original, double[] parameters);
 	}
 }
 

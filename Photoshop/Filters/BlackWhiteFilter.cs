@@ -9,7 +9,7 @@ namespace MyPhotoshop.Filters
 {
     class BlackWhiteFilter: PixelFilter
     {
-        protected override Pixel ProcessPixel(Pixel original, IList<FilterParameter> parameters)
+        protected override Pixel ProcessPixel(Pixel original, IParameters parameters)
         {
             var avg = (original.R + original.G + original.B) / 3;
             return new Pixel(avg, avg, avg);
@@ -18,6 +18,10 @@ namespace MyPhotoshop.Filters
         public override string ToString()
         {
             return "Оттенки серого";
+        }
+
+        public BlackWhiteFilter() : base( new EmptyParameters() )
+        {
         }
     }
 }
